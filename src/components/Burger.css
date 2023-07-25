@@ -1,0 +1,80 @@
+.burger {
+	margin: 30px auto;
+	text-align: center;
+	height: 400px;
+	width: 100%;
+	overflow: auto;
+}
+
+.ingredients {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	text-align: center;
+	background-color: #f4b46c;
+	padding: 20px;
+	display: table;
+	max-width: 300px;
+	width: 100%;
+	border-radius: 8px;
+}
+
+.ingredients p {
+	margin: 15px 0px 5px 0px;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+.ingredient-btn {
+	text-align: center;
+	margin: 0 20px 10px 20px;
+	background-color: #c17116;
+	color: white;
+	border: 0;
+	padding: 5px;
+	border-radius: 8px;
+	width: 95px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.ingredient-btn:hover {
+	background-color: #6d3a00;
+}
+
+.top-bun, .bottom-bun, .lettuce, .tomato, .cheese, .meat {
+	background-size: 300px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100%;
+	display: table;
+}
+
+.top-bun {
+	background-image: url(../images/top.jpg);
+	height: 110px;
+}
+
+.bottom-bun {
+	background-image: url(../images/bottom.jpg);
+	height: 60px;
+}
+
+.lettuce {
+	background-image: url(../images/lettuce.jpg);
+	height: 27px;
+}
+
+.tomato {
+	background-image: url(../images/tomato.jpg);
+	height: 20px;
+}
+
+.cheese {
+	background-image: url(../images/cheese.jpg);
+	height: 15px;
+}
+
+.meat {
+	background-image: url(../images/meat.jpg);
+	height: 49px;
+}
