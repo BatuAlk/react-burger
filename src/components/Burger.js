@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './Burger.css';
 
@@ -9,6 +9,28 @@ const Burger = () => {
 		cheese: 0,
 		meat: 0,
 	});
+
+	const [cost, setCost] = useState(0);
+
+	const addOrRemoveIngredient = (ingredient, action) => {
+		if (action === 'add') {
+			setItems({
+				...items,
+				[ingredient]: items[ingredient] + 1,
+			});
+		} else if (action === 'remove') {
+			setItems({
+				...items,
+				[ingredient]: items[ingredient] - 1 < 0 ? 0 : items[ingredient] - 1,
+			});
+		} else {
+			console.log('Invalid action!');
+		}
+	}
+
+	useEffect(() => {
+		setCost(items['lettuce'] * 13 + items['tomato'] * 15 + items['cheese'] * 17 + items['meat'] * 30);
+	}, [items]);
 
 	return (
 		<>
@@ -24,86 +46,46 @@ const Burger = () => {
 				<div className='bottom-bun'></div>
 			</div>
 
-			<div className='cost'>Cost: {items['lettuce'] * 13 + items['tomato'] * 15 + items['cheese'] * 17 + items['meat'] * 30}₺</div>
+			<div className='cost'>Cost: {cost}₺</div>
 			<div className='ingredients'>
 				<p>Lettuce</p>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							lettuce: items['lettuce'] + 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('lettuce', 'add')}
 				>Add</button>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							lettuce: items['lettuce'] - 1 < 0 ? 0 : items['lettuce'] - 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('lettuce', 'remove')}
 				>Remove</button>
 
 				<p>Tomato</p>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							tomato: items['tomato'] + 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('tomato', 'add')}
 				>Add</button>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							tomato: items['tomato'] - 1 < 0 ? 0 : items['tomato'] - 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('tomato', 'remove')}
 				>Remove</button>
 
 				<p>Cheese</p>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							cheese: items['cheese'] + 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('cheese', 'add')}
 				>Add</button>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							cheese: items['cheese'] - 1 < 0 ? 0 : items['cheese'] - 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('cheese', 'remove')}
 				>Remove</button>
 
 				<p>Meat</p>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							meat: items['meat'] + 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('meat', 'add')}
 				>Add</button>
 				<button
 					className='ingredient-btn'
-					onClick={() =>
-						setItems({
-							...items,
-							meat: items['meat'] - 1 < 0 ? 0 : items['meat'] - 1,
-						})
-					}
+					onClick={() => addOrRemoveIngredient('meat', 'remove')}
 				>Remove</button>
 			</div>
 		</>
