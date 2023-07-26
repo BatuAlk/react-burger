@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import './Burger.css';
 
@@ -10,44 +10,21 @@ const Burger = () => {
 		meat: 0,
 	});
 
-	useEffect(() => {
-		document.querySelector('.burger-content').innerHTML = '';
-		for (let i = 0; i < items['lettuce']; i++) {
-			let lettuce = document.createElement('div');
-			lettuce.className = 'lettuce';
-			document.querySelector('.burger-content').appendChild(lettuce);
-		}
-		for (let i = 0; i < items['tomato']; i++) {
-			let tomato = document.createElement('div');
-			tomato.className = 'tomato';
-			document.querySelector('.burger-content').appendChild(tomato);
-		}
-		for (let i = 0; i < items['cheese']; i++) {
-			let cheese = document.createElement('div');
-			cheese.className = 'cheese';
-			document.querySelector('.burger-content').appendChild(cheese);
-		}
-		for (let i = 0; i < items['meat']; i++) {
-			let meat = document.createElement('div');
-			meat.className = 'meat';
-			document.querySelector('.burger-content').appendChild(meat);
-		}
-	}, [items]);
-
 	return (
 		<>
 			<div className='burger'>
 				<div className='top-bun'></div>
 				{items['lettuce'] + items['tomato'] + items['cheese'] + items['meat'] === 0 && <p>Add ingredients to your burger!</p>}
-				<div className='burger-content'></div>
+				<div className='burger-content'>
+					{items['lettuce'] > 0 && Array.from(Array(items['lettuce'])).map((_, i) => <div key={i} className='lettuce'></div>)}
+					{items['tomato'] > 0 && Array.from(Array(items['tomato'])).map((_, i) => <div key={i} className='tomato'></div>)}
+					{items['cheese'] > 0 && Array.from(Array(items['cheese'])).map((_, i) => <div key={i} className='cheese'></div>)}
+					{items['meat'] > 0 && Array.from(Array(items['meat'])).map((_, i) => <div key={i} className='meat'></div>)}
+				</div>
 				<div className='bottom-bun'></div>
 			</div>
 
-			<div className='cost'>Cost: {items['lettuce'] * 13
-				+ items['tomato'] * 15
-				+ items['cheese'] * 17
-				+ items['meat'] * 30
-			}₺</div>
+			<div className='cost'>Cost: {items['lettuce'] * 13 + items['tomato'] * 15 + items['cheese'] * 17 + items['meat'] * 30}₺</div>
 			<div className='ingredients'>
 				<p>Lettuce</p>
 				<button

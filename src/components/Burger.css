@@ -1,6 +1,7 @@
 .burger {
-	margin: 30px auto;
+	margin: 30px;
 	text-align: center;
+	justify-content: center;
 	height: 400px;
 	width: 100%;
 	overflow: auto;
